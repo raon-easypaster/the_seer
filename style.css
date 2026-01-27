@@ -675,3 +675,19 @@ footer {
     position: relative;
     z-index: 2;
 }
+
+/* ===== 텍스트 레이어 강제 복구 ===== */
+
+/* Hero 텍스트 */
+.hero .hero-content,
+.hero .container {
+    position: relative;
+    z-index: 10;
+}
+
+/* About 텍스트 */
+.about-bg .container {
+    position: relative;
+    z-index: 10;
+}
+
