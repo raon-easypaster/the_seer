@@ -575,8 +575,10 @@ footer {
    Animations
 -------------------- */
 .fade-up {
-    opacity: 0;
-    transform: translateY(30px);
+    opacity: 1;
+    /* Changed from 0 to ensure visibility if JS fails */
+    transform: translateY(0);
+    /* Changed from 30px */
     transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -653,6 +655,8 @@ footer {
     display: flex;
     align-items: center;
     color: #fff;
+    background-color: var(--black);
+    /* Fallback */
 }
 
 .hero-main {
@@ -681,6 +685,8 @@ footer {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-color: var(--gray-500);
+    /* Fallback */
 }
 
 .about-bg::before {
