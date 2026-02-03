@@ -769,3 +769,119 @@ footer {
     position: absolute;
     left: 0;
 }
+
+/* Donation Section */
+.donation-section {
+    padding: 60px 0;
+    background-color: white;
+}
+
+.donation-card {
+    background: linear-gradient(135deg, #f7f6f3 0%, #ffffff 100%);
+    border: 2px solid var(--accent);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    box-shadow: 0 10px 30px rgba(196, 106, 43, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.donation-card::after {
+    content: "";
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 150px;
+    height: 150px;
+    background: rgba(196, 106, 43, 0.05);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.donation-icon {
+    background: var(--accent);
+    color: white;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    z-index: 1;
+}
+
+.donation-content {
+    z-index: 1;
+    flex-grow: 1;
+}
+
+.donation-title {
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--black);
+}
+
+.donation-description {
+    font-size: 1rem;
+    color: var(--gray-700);
+    margin-bottom: 24px;
+}
+
+.account-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    border: 1px solid var(--gray-300);
+    width: fit-content;
+}
+
+.bank-name {
+    font-weight: 700;
+    color: #ffde00;
+    /* Kakao Yellow */
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+    background: #3c1e1e;
+    /* Kakao Brown background for contrast */
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.account-number {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--black);
+    letter-spacing: 0.05em;
+}
+
+.account-holder {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--gray-700);
+}
+
+@media (max-width: 768px) {
+    .donation-card {
+        flex-direction: column;
+        text-align: center;
+        padding: 30px;
+        gap: 20px;
+    }
+
+    .account-info {
+        flex-direction: column;
+        width: 100%;
+        gap: 8px;
+    }
+
+    .account-number {
+        font-size: 1.2rem;
+    }
+}
