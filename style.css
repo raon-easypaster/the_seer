@@ -716,6 +716,11 @@ footer {
     padding: 100px 0;
 }
 
+/* Reduce spacing between consecutive founder sections */
+.founder-section+.founder-section {
+    padding-top: 0;
+}
+
 .founder-title {
     font-size: 0.9rem;
     color: var(--accent);
@@ -841,6 +846,26 @@ footer {
     border-radius: 12px;
     border: 1px solid var(--gray-300);
     width: fit-content;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.account-info:hover {
+    border-color: var(--accent);
+    background-color: #fff8f0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.account-info:active {
+    transform: translateY(0);
+}
+
+.copy-hint {
+    font-size: 0.8rem;
+    color: var(--gray-500);
+    margin-left: 8px;
+    opacity: 0.8;
 }
 
 .bank-name {

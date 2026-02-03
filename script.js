@@ -1,69 +1,63 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Mobile Menu Toggle
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navMenu = document.querySelector('.nav-menu');
 
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-        });
+// Menu Toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const navMenu = document.querySelector('.nav-menu');
 
-        // Close menu when clicking links
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navMenu.classList.remove('active');
-            });
-        });
-    }
+menuToggle.addEventListener('click', () => {
+    menuToggle.classList.toggle('active');
+    navMenu.classList.toggle('active');
+});
 
-    // 2. Scroll Animation (Fade-up)
-    const fadeElements = document.querySelectorAll('.fade-up');
+// Close menu when clicking a link (mobile)
+document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+    menuToggle.classList.remove('active');
+    navMenu.classList.remove('active');
+}));
 
-    const fadeObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                // stop observing after animation is triggered
-                fadeObserver.unobserve(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.1, // Trigger when 10% of element is visible
-        rootMargin: '0px 0px -50px 0px' // Offset to trigger slightly before/at entry
-    });
+// Scroll Animation
+const observerOptions = {
+    threshold: 0.1
+};
 
-    fadeElements.forEach(el => fadeObserver.observe(el));
-
-    // 3. Header background on scroll
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.05)';
-        } else {
-            header.style.boxShadow = 'none';
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
         }
     });
+}, observerOptions);
 
-    // 4. Smooth Anchor Scrolling (Fallback)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
-                const headerOffset = 80;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        });
-    });
+document.querySelectorAll('.fade-up').forEach(el => {
+    observer.observe(el);
 });
+
+// Copy to Clipboard Function
+function copyToClipboard(text) {
+    if (navigator.clipboard && window.isSecureContext) {
+        // Modern approach
+        navigator.clipboard.writeText(text).then(() => {
+            alert("후원계좌번호가 복사되었습니다: " + text);
+        }).catch(err => {
+            console.error('복사 실패', err);
+            prompt("복사를 위해 키를 눌러주세요 (Ctrl+C)", text);
+        });
+    } else {
+        // Fallback for older browsers or non-secure contexts
+        let textArea = document.createElement("textarea");
+        textArea.value = text;
+        textArea.style.position = "fixed";
+        textArea.style.left = "-999999px";
+        textArea.style.top = "-999999px";
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            alert("후원계좌번호가 복사되었습니다: " + text);
+        } catch (err) {
+            console.error('복사 실패', err);
+            prompt("복사를 위해 키를 눌러주세요 (Ctrl+C)", text);
+        }
+        textArea.remove();
+    }
+}
