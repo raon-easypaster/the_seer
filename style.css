@@ -422,6 +422,32 @@ header {
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
 }
 
+.program-list {
+    list-style: none;
+    margin-top: 16px;
+}
+
+.program-list li {
+    font-size: 0.9rem;
+    color: var(--gray-700);
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 14px;
+    line-height: 1.4;
+}
+
+.program-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+}
+
+.program-list li strong {
+    color: var(--black);
+    font-weight: 600;
+}
+
 .archive-grid .archive-card:nth-child(1):hover {
     border-color: #7c3aed;
 }
@@ -458,7 +484,7 @@ header {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
 }
 
 .hero .container {
@@ -479,7 +505,7 @@ header {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.75);
+    background: rgba(255, 255, 255, 0.75);
 }
 
 .about-bg .container {
@@ -640,7 +666,7 @@ footer {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.35);
+    background: rgba(0, 0, 0, 0.35);
 }
 
 .hero .container {
@@ -661,7 +687,7 @@ footer {
     content: "";
     position: absolute;
     inset: 0;
-    background: rgba(255,255,255,0.75);
+    background: rgba(255, 255, 255, 0.75);
 }
 
 .about-bg .container {
@@ -684,3 +710,62 @@ footer {
     z-index: 10;
 }
 
+/* Founder Section */
+.founder-section {
+    background-color: var(--bg-warm);
+    padding: 100px 0;
+}
+
+.founder-title {
+    font-size: 0.9rem;
+    color: var(--accent);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.founder-name {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 32px;
+}
+
+.founder-bio p {
+    font-size: 1.1rem;
+    color: var(--gray-700);
+    margin-bottom: 24px;
+    line-height: 1.8;
+}
+
+.founder-history {
+    margin-top: 48px;
+    background: white;
+    padding: 32px;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.founder-history h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+}
+
+.founder-history ul {
+    list-style: none;
+}
+
+.founder-history li {
+    font-size: 0.95rem;
+    color: var(--gray-500);
+    margin-bottom: 8px;
+    padding-left: 16px;
+    position: relative;
+}
+
+.founder-history li::before {
+    content: "-";
+    position: absolute;
+    left: 0;
+}
